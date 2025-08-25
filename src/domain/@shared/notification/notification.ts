@@ -14,6 +14,10 @@ export default class Notification {
     return this.errors.length > 0;
   }
 
+  getErrors(): NotificationErrorProps[] {
+    return this.errors;
+  }
+
   messages(context?: string): string {
     let message = "";
     this.errors.forEach((error) => {
