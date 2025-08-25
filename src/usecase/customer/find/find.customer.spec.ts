@@ -3,6 +3,7 @@ import CustomerModel from "../../../infrastructure/customer/repository/sequelize
 import CustomerRepository from "../../../infrastructure/customer/repository/sequelize/customer.repository";
 import Customer from "../../../domain/customer/entity/customer";
 import Address from "../../../domain/customer/value-object/address";
+import FindCustomerUseCase from "./find.customer.usecase";
 
 describe("Test find customer use case", () => {
   let sequelize: Sequelize;
@@ -27,7 +28,7 @@ describe("Test find customer use case", () => {
     const customerRepository = new CustomerRepository();
     const usecase = new FindCustomerUseCase(customerRepository);
     const customer = new Customer("123", "Mução");
-    const address = new Address("Street 1", 123, "City", "Zip");
+    const address = new Address("Street 1", 123, "Zip", "City");
     customer.changeAddress(address);
     await customerRepository.create(customer);
 
